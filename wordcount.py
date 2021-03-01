@@ -1,18 +1,21 @@
 # put your code here.
 
-
+word_count_dict = {}
 def word_count(file):
   word_count_data = open(file)
 
   for line in word_count_data:
-    file_data = line.split(" ")
+    line = line.rstrip()
+    file_data = line.split()
 
-  word_count_dict = {}
+  
 
-  for word in file_data:
-    word_count_dict[word] = +1
-  print(f"{word_count_dict.keys()}, {word_count_dict.values()}")
+    for word in file_data:
+      word_count_dict[word] = word_count_dict.get(word, 0) +1
+  
+  for word, count in word_count_dict.items():
+    print(word, count)
   
   word_count_data.close()
   
-word_count("test.txt")
+word_count("./test.txt")
